@@ -31,11 +31,11 @@ class ControllerWithOptions : public controller_interface::ControllerInterface
 {
 public:
   ControllerWithOptions() = default;
-  controller_interface::return_type init(const std::string & controller_name) override
+  controller_interface::return_type init(const std::string & controller_name, const std::string & ns) override
   {
     rclcpp::NodeOptions options;
     options.allow_undeclared_parameters(true).automatically_declare_parameters_from_overrides(true);
-    auto result = ControllerInterface::init(controller_name, options);
+    auto result = ControllerInterface::init(controller_name, ns, options);
     if (result == controller_interface::return_type::ERROR)
     {
       return result;

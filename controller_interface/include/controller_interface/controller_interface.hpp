@@ -89,10 +89,10 @@ public:
   void release_interfaces();
 
   CONTROLLER_INTERFACE_PUBLIC
-  virtual return_type init(const std::string & controller_name);
+  virtual return_type init(const std::string & controller_name, const std::string & ns);
 
   CONTROLLER_INTERFACE_PUBLIC
-  virtual return_type init(const std::string & controller_name, rclcpp::NodeOptions & node_options);
+  virtual return_type init(const std::string & controller_name, const std::string & ns, rclcpp::NodeOptions & node_options);
 
   CONTROLLER_INTERFACE_PUBLIC
   virtual return_type update() = 0;

@@ -62,6 +62,8 @@ ControllerManager::ControllerManager(
   loader_(std::make_shared<pluginlib::ClassLoader<controller_interface::ControllerInterface>>(
     kControllerInterfaceName, kControllerInterface))
 {
+  namespace__ = namespace_;
+
   std::string robot_description = "";
   get_parameter("robot_description", robot_description);
   if (robot_description.empty())
@@ -87,6 +89,7 @@ ControllerManager::ControllerManager(
   loader_(std::make_shared<pluginlib::ClassLoader<controller_interface::ControllerInterface>>(
     kControllerInterfaceName, kControllerInterface))
 {
+  namespace__ = namespace_;
   init_services();
 }
 
@@ -627,7 +630,7 @@ controller_interface::ControllerInterfaceSharedPtr ControllerManager::add_contro
     return nullptr;
   }
 
-  if (controller.c->init(controller.info.name) == controller_interface::return_type::ERROR)
+  if (controller.c->init(controller.info.name, namespace__) == controller_interface::return_type::ERROR)
   {
     to.clear();
     RCLCPP_ERROR(

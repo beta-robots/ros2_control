@@ -220,6 +220,8 @@ protected:
     std::shared_ptr<controller_manager_msgs::srv::UnloadController::Response> response);
 
 private:
+  std::string namespace__;
+
   std::vector<std::string> get_controller_names();
 
   std::unique_ptr<hardware_interface::ResourceManager> resource_manager_;

@@ -26,7 +26,7 @@ TestControllerFailedInit::TestControllerFailedInit() : controller_interface::Con
 }
 
 controller_interface::return_type TestControllerFailedInit::init(
-  const std::string & /* controller_name */)
+  const std::string & /* controller_name */, const std::string & /* namespace */)
 {
   return controller_interface::return_type::ERROR;
 }
